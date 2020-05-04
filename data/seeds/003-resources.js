@@ -1,6 +1,6 @@
 
 exports.seed = function (knex) {
-  return knex('tasks').insert([
+  return knex('resources').insert([
     {
       project_id: 1,
       resource_name: "laptop",
