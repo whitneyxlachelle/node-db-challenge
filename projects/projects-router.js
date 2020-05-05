@@ -25,4 +25,21 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/:id/tasks', (req, res) => {
+  const { id } = req.params;
+  Projects.getTasks(id)
+
+    .then(tasks => {
+      if (tasks.length) {
+        res.status(200).json(tasks)
+      } else {
+        res.status(404).json({ message: 'error' })
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ message: 'Failed to retrieve tasks' })
+    })
+})
+
+
 module.exports = router;
